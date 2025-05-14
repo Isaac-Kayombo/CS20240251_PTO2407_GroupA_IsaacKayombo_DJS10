@@ -23,7 +23,24 @@ function App() {
     fetchPosts();
   }, []);
 
-  return ()
+  return (
+    <div>
+      <h1>Blog Posts</h1>
+
+      {error && (<p>Failed to load blog posts. {error}</p>)}
+
+      {!error && posts.length > 0 && (
+        <div>
+          {posts.map((post) => (
+            <div key={post.id}>
+              <h2>{post.title}</h2>
+              <p>{post.body}</p>
+            </div>
+          ))}
+        </div>
+      )}
+    </div>
+  )
 }
 
 export default App
